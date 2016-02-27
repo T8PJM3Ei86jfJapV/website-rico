@@ -1,0 +1,33 @@
+body {
+    padding-bottom: 0;
+}
+
+img {
+    max-width: 100%;
+}
+
+.row {
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.text-shadow {
+    font-weight: normal;
+    text-shadow: 1px 2px 1px rgba(0,0,0,0.45);
+}
+
+.text-white {
+    color: #fff;
+}
+
+.text-gray {
+    color: #999;
+}
+
+.set-top {
+    margin-top: 0;
+}
+
+.set-bottom {
+    margin-bottom: 0;
+}
