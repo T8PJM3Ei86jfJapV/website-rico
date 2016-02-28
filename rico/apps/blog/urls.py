@@ -2,7 +2,7 @@
 
 from django.conf.urls import url
 
-from views import system, post
+from rico.apps.blog.views import post
 
 urlpatterns = [
     url(r'^$', post.index, name='index'),
