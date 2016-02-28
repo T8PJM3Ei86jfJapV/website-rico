@@ -1,2 +1,3 @@
 rico/settings.py
 SYSTEM.txt
+**/*.pyc
