@@ -7,6 +7,7 @@ from rico.apps.blog.service.post import query_post_by_page
 from rico.apps.blog.service.post import query_recent_posts
 from rico.apps.blog.service.post import get_page_count
 from rico.apps.blog.service.post import get_post_by_slug
+from rico.apps.blog.service.post import refresh_post_by_slug
 
 
 def index(request):
@@ -25,9 +26,18 @@ def index(request):
 
     return render(request, 'blog/index.html', kwags)
 
+
 def view(request, slug):
     try:
         post = get_post_by_slug(slug)
+    except Exception as msg:
+        raise Http404(msg)
+    return render(request, 'blog/view.html', dict(post=post))
+
+
+def refresh(request, slug):
+    try:
+        post = refresh_post_by_slug(slug)
     except Exception as msg:
         raise Http404(msg)
     return render(request, 'blog/view.html', dict(post=post))

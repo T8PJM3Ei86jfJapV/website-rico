@@ -19,12 +19,7 @@ from django.contrib import admin
 from django.conf.urls.static import static
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
+    # url(r'^admin/', admin.site.urls),
     url(r'^', include('rico.apps.root.urls')),
     url(r'^blog/', include('rico.apps.blog.urls')),
 ]
-
-# if settings.DEBUG:
-#     urlpatterns += patterns('',
-#         (r'^media/(?P<path>.*)$', 'django.views.static.serve', {
-#         'document_root': settings.MEDIA_ROOT}))

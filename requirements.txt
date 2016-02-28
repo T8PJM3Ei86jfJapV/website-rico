@@ -1,2 +1,2 @@
 Django==1.9
-markdown2==2.3.0
+mistune==0.7.1

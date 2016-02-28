@@ -1,6 +1,6 @@
 # -*- coding:utf-8 -*-
 
-import logging
+import mistune
 
 from rico.apps.blog.models.post import Post
 
@@ -42,4 +42,14 @@ def get_post_by_slug(slug):
     post = Post.objects.get(slug=slug, published=True, deleted=False)
     if not post:
         raise Exception('Oops, page not found!')
+    return post
+
+
+def refresh_post_by_slug(slug):
+    post = get_post_by_slug(slug)
+    
+    md2html = mistune.Markdown()
+    post.html = md2html(post.markdown)
+    post.save()
+    
     return post
