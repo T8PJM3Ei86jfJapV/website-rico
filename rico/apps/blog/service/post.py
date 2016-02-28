@@ -5,7 +5,7 @@ import mistune
 from rico.apps.blog.models.post import Post
 
 
-POSTS_PER_PAGE = 5
+POSTS_PER_PAGE = 7
 
 # maximum of unsigned bigint: 2^64-1
 MYSQL_MAX_OFFSET = 18446744073709551615
