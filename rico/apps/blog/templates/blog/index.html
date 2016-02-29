@@ -81,10 +81,29 @@
         </div><!-- /.blog-sidebar -->
 
       </div><!-- /.row -->
+      
+      
+      <div class="row">
+        <div class="col-sm-8">
+          <p id="total-pages" style="display:none;">{{ page_count }}</p>
+          <ul id="pagination-demo" class="pagination-sm pagination"></ul>
+        </div>
+        <div class="col-sm-4"></div>
+      </div><!-- /.row -->
+      
+      <div class="row">
+        <div class="col-xs-12" style="height:50px;"></div>
+      </div>
+      <div class="clearfix"></div>
+      
 
     </div><!-- /.container -->
 
     {% include "footer.html" %}
+    
+
+    <script type="text/javascript" src="/static/framework/esimakin-twbs-pagination/jquery.twbsPagination.min.js"></script>
+    <script type="text/javascript" src="/static/js/blog/index.js"></script>
     
   </body>
 </html>

@@ -21,5 +21,6 @@ from django.conf.urls.static import static
 urlpatterns = [
     # url(r'^admin/', admin.site.urls),
     url(r'^', include('rico.apps.root.urls')),
+    url(r'^blog', include('rico.apps.blog.urls')),
     url(r'^blog/', include('rico.apps.blog.urls')),
 ]
