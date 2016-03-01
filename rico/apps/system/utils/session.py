@@ -12,6 +12,7 @@ class SessionStore(DBStore):
     def create_model_instance(self, data):
         obj = super(SessionStore, self).create_model_instance(data)
         try:
+            # sys_user(id, uuid, ...)
             user_id = int(data.get('_sys_user_id'))
         except (ValueError, TypeError):
             user_id = None
