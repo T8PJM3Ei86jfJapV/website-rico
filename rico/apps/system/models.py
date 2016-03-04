@@ -32,8 +32,10 @@ class AccessLog(models.Model):
     browser = models.CharField(max_length=150, null=True)
     path = models.CharField(max_length=500)
     method = models.CharField(max_length=50)
+    status_code = models.IntegerField(default=0)
     query_string = models.TextField()
     request_body = models.TextField()
+    referer = models.CharField(max_length=150, null=True)
     ctime = models.DateTimeField(auto_now_add=True)
     
     class Meta:

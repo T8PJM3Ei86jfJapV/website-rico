@@ -29,19 +29,27 @@ class ClientIdentifyMiddleware(object):
 
 
 class AccessLogMiddleware(object):
-    def process_request(self, request):
+    
+    def process_response(self, request, response):
         log = AccessLog()
         log.client_id = request.COOKIES.get('clientid', '')
-        log.user_agent = request.META.get('HTTP_USER_AGENT', '')
-        log.os, log.browser = httpagentparser.simple_detect(log.user_agent)
-        log.path = request.path
-        log.method = request.method
-        log.query_string = request.GET.urlencode()
-        log.request_body = request.body
         # get remote address
         x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
         if x_forwarded_for:
             log.remote_addr = x_forwarded_for.split(',')[0]
         else:
             log.remote_addr = request.META.get('REMOTE_ADDR', '')
+        log.path = request.path
+        log.method = request.method
+        log.query_string = request.GET.urlencode()
+        log.request_body = request.body
+        log.referer = request.META.get('HTTP_REFERER', '')
+        log.user_agent = request.META.get('HTTP_USER_AGENT', '')
+        log.os, log.browser = httpagentparser.simple_detect(log.user_agent)
+        log.status_code = response.status_code
+        try:
+            log.session_id = request.session.session_key
+        except:
+            pass
         log.save()
+        return response
