@@ -25,7 +25,7 @@ class User(models.Model):
 
 class AccessLog(models.Model):
     uuid = models.UUIDField(primary_key=False, default=uuid.uuid4, editable=False)
-    session_id = models.CharField(max_length=150, blank=True)
+    client_id = models.CharField(max_length=150, blank=True)
     remote_addr = models.CharField(max_length=150)
     user_agent = models.TextField()
     path = models.CharField(max_length=500)
