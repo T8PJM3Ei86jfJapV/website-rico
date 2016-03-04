@@ -28,6 +28,8 @@ class AccessLog(models.Model):
     client_id = models.CharField(max_length=150, blank=True)
     remote_addr = models.CharField(max_length=150)
     user_agent = models.TextField()
+    os = models.CharField(max_length=150)
+    browser = models.CharField(max_length=150)
     path = models.CharField(max_length=500)
     method = models.CharField(max_length=50)
     query_string = models.TextField()

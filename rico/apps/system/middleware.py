@@ -2,7 +2,10 @@
 
 import uuid
 
+import httpagentparser
+
 from django.http import HttpResponse, HttpResponseForbidden
+
 from rico.apps.system.models import AccessLog
 
 CLIENTID_MAX_AGE = 86400 * 3650 # 10 years
@@ -30,6 +33,7 @@ class AccessLogMiddleware(object):
         log = AccessLog()
         log.client_id = request.COOKIES.get('clientid', '')
         log.user_agent = request.META.get('HTTP_USER_AGENT', '')
+        log.os, log.browser = httpagentparser.simple_detect(log.user_agent)
         log.path = request.path
         log.method = request.method
         log.query_string = request.GET.urlencode()
